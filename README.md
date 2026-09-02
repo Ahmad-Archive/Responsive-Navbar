@@ -18,7 +18,7 @@ Pastikan perangkat Anda sudah terpasang:
 
 ---
 
-## Proses Instalasi & Menjalankan Portofolio
+## Proses Instalasi & Menjalankan Website
 
 ### 1. Clone Repository
 ```bash
