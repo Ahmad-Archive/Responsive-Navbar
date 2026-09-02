@@ -1,0 +1,210 @@
+:root {
+    --bg: #0a0a0a;
+    --bg-nav: rgba(255, 255, 255, 0.45);
+    --border-glass: 1px solid rgba(255, 255, 255, 0.3);
+    --shadow: 0 12px 32px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+    --primary-color: #171717;
+    --secondary-color: #27272a;
+    --text-muted: #54545a;
+    --glass-orb-1: radial-gradient(circle, #800000, transparent);
+    --glass-orb-2: radial-gradient(circle, rgba(0, 0, 128, 0.8), transparent);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--bg);
+  inset: 0;
+  background-image: linear-gradient(rgba(235,237,236,0.1) 2px, transparent 2px),
+                    linear-gradient(90deg, rgba(235,237,236,0.1) 2px, transparent 2px);
+  background-size: 60px 60px;
+}
+
+.bg-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bg-orb-1 {
+  width: 500px;
+  height: 500px;
+  background: var(--glass-orb-1);
+  top: 100px;
+  left: -150px;
+}
+
+.bg-orb-2 {
+  width: 500px;
+  height: 500px;
+  background: var(--glass-orb-2);
+  top: -150px;
+  right: 150px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    padding: 0 28px;
+    border: var(--border-glass);
+    border-radius: 50px;
+    margin: 0 auto;
+    height: 70px;
+    background: var(--bg-nav);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.nav-logo {
+    font: 1.6rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+}
+
+.nav-logo span {
+    background: var(--secondary-color);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-links a:hover {
+    color: var(--text-muted);
+}
+
+.nav-links li a {
+  color: var(--primary-text);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 2px;
+  background: linear-gradient(90deg, var(--bg), var(--bg-nav));
+  transition: width 0.3s ease;
+}
+
+.nav-links li a:hover::after { width: 100%; }
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+.mobile-menu {
+  position: fixed;
+  top: 56px; left: 0; right: 0;
+  background: var(--bg-nav);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  padding: 1.5rem 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  z-index: 99;
+  transform: translateY(-130%);
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.mobile-menu.open {
+  transform: translateY(5%);
+  border-radius: 18px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+.mobile-menu a {
+  color: var(--primary-text);
+  text-decoration: none;
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--glass-border);
+  transition: color 0.3s;
+}
+.mobile-menu a:hover { color: var(--gray); }
+.mobile-menu .navbar.scrolled .nav-logo {
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .nav-logo {
+        font-size: 1.2rem;
+    }
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .mobile-menu {
+        display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-logo {
+        font-size: 1rem;
+    }
+
+    .nav-links {
+        gap: 2rem;
+    }
+}
