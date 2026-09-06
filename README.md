@@ -1,6 +1,6 @@
 # Ahmad Archive - Navbar
 
-Contoh pembuatan navbar.
+Komponen navbar yang berfungsi sebagai navigasi utama pada website. Yang memudahkan pengguna untuk berpindah antar halaman.
 
 Yang dibangun menggunakan React Vite, dan fontsource.
 
