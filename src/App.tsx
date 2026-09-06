@@ -34,8 +34,6 @@ export default function Navbar() {
 
   return (
     <>
-    <div className="bg-orb bg-orb-1" />
-    <div className="bg-orb bg-orb-2" />
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="nav-logo">
         <h3>Ahmad - <span>Archive</span></h3>
